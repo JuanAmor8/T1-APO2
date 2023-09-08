@@ -1,14 +1,14 @@
 package model;
 
-public class Node {
+public class PipeNode {
 
     private double number;
 
-    private Node left;
+    private PipeNode left;
 
-    private Node right;
+    private PipeNode right;
 
-    public Node(double number) {
+    public PipeNode(double number) {
         this.number = number;
     }
 
@@ -20,19 +20,19 @@ public class Node {
         this.number = number;
     }
 
-    public Node getLeft() {
+    public PipeNode getLeft() {
         return left;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(PipeNode left) {
         this.left = left;
     }
 
-    public Node getRight() {
+    public PipeNode getRight() {
         return right;
     }
 
-    public void setRight(Node right) {
+    public void setRight(PipeNode right) {
         this.right = right;
     }
 

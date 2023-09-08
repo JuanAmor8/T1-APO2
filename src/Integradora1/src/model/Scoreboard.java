@@ -2,7 +2,7 @@ package model;
 
 public class Scoreboard {
 
-    private Node root;
+    private PipeNode root;
 
     public Scoreboard() {
         this.root = null;
@@ -14,20 +14,20 @@ public class Scoreboard {
 
 
 
-    private void addNode(Node pointer, double number){
+    private void addNode(PipeNode pointer, double number){
 
-        Node node = new Node(number);
+        PipeNode pipeNode = new PipeNode(number);
         if(pointer==null){
-            root=node;
-        } else if (node.getNumber() < (pointer.getNumber())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
+            root= pipeNode;
+        } else if (pipeNode.getNumber() < (pointer.getNumber())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
             if(pointer.getLeft()==null){
-                pointer.setLeft(node);
+                pointer.setLeft(pipeNode);
             }else{
                 addNode(pointer.getLeft(), number);
             }
         } else { // el valor del nuevo nodo es igual o mayor que el puntero actual
             if (pointer.getRight()==null){
-                pointer.setRight(node);
+                pointer.setRight(pipeNode);
             } else {
                 addNode(pointer.getRight(), number);
             }
@@ -38,7 +38,7 @@ public class Scoreboard {
         return print(root);
     }
 
-    private String print(Node pointer){
+    private String print(PipeNode pointer){
         if (pointer == null){
             return "";
         }
@@ -47,7 +47,7 @@ public class Scoreboard {
         }
     }
 
-    private double getMin(Node pointer){
+    private double getMin(PipeNode pointer){
         if(pointer.getLeft()==null){
             return pointer.getNumber();
         }
@@ -56,7 +56,7 @@ public class Scoreboard {
         }
     }
 
-    private double getMax(Node pointer){
+    private double getMax(PipeNode pointer){
         if(pointer.getRight()==null){
             return pointer.getNumber();
         }
