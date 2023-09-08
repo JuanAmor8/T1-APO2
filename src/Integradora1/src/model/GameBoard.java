@@ -8,9 +8,9 @@ public class GameBoard {
 
     private int key;
 
-    public void addNodeAtTail(String nickname){
+    public void addNodeAtTail(int pipe){
 
-        Player player = new Player(nickname);
+         player = new Player(nickname);
 
         PipeNode pipeNode = new PipeNode(player);
 

@@ -63,7 +63,33 @@ public class Main {
 
     public void nuevaPartida(){
 
+        System.out.println("1. Poner tuberias ");
+        System.out.println("2. Simular ");
+        System.out.println("Salir");
 
+        String optionString = rd.nextLine();
+        int option = Integer.parseInt(optionString);
+
+        switch (option){
+            case 1:
+
+
+                break;
+
+            case 2:
+
+
+                break;
+
+            case 3:
+
+
+                break;
+
+            default:
+
+                System.out.println("Ingrese un numero del 1 al 3 ");
+        }
 
     }
 

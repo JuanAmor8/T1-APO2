@@ -1,4 +1,7 @@
 package model;
 
-public class EnumPipeline {
+public enum EnumPipeline {
+
+    VERTICAL,HORIZONTAL,CIRCULAR,D,F,X;
+
 }
