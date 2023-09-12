@@ -6,16 +6,9 @@ public class GameBoard {
 
     private PipeNode tail;
 
-    private int key;
+    public void addNodeAtTail(int column, int row){
 
-
-    public void createBoard() {
-
-    }
-
-    public void addNodeAtTail(int column, int row,int pipe){
-
-         PipelineType pipeline= new PipelineType(column,row,pipe);
+         Pipeline pipeline= new Pipeline(column,row);
 
         PipeNode pipeNode = new PipeNode(pipeline);
 
@@ -34,13 +27,41 @@ public class GameBoard {
 
 
     private PipeNode findNode(PipeNode pointer, int row, int column){
-        if(pointer!=null && pointer.getPipelineType().getRow()!=row && pointer.getPipelineType().getColumn()!=column){ // hace la recursion cuando no encuentra al nodo
+        if(pointer!=null && pointer.getPipeline().getRow()!=row && pointer.getPipeline().getColumn()!=column){ // hace la recursion cuando no encuentra al nodo
             return findNode(pointer.getNext(),row,column);
         }
         return pointer; // null cuando no lo encuentra
     }
 
+    public String print(){
+        return print(head,0);
+    }
 
+    private String print(PipeNode pointer,int counter){
+
+        String msg = "";
+
+        if (head == null){
+            msg += "There are no houses";
+        }
+
+        else if (counter%8 == 0){
+            msg+="\n";
+            counter = 0;
+        }
+
+        else if(pointer.getNext() == null){
+
+            msg += "" + pointer.getPipeline().getPipelineType();
+
+        }
+        else{
+
+            msg += pointer.getPipeline().getPipelineType() + " " + print(pointer.getNext(),counter+1);
+
+        }
+        return msg;
+    }
 
 
 }

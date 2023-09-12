@@ -2,22 +2,22 @@ package model;
 
 public class PipeNode {
 
-    private PipelineType pipelineType;
+    private Pipeline pipeline;
 
     private PipeNode next;
 
     private PipeNode previous;
 
-    public PipeNode(PipelineType pipeline) {
-        this.pipelineType = pipeline;
+    public PipeNode(Pipeline pipeline) {
+        this.pipeline = pipeline;
     }
 
-    public PipelineType getPipelineType() {
-        return pipelineType;
+    public Pipeline getPipeline() {
+        return pipeline;
     }
 
-    public void setPipelineType(PipelineType pipelineType) {
-        this.pipelineType = pipelineType;
+    public void setPipelineType(Pipeline pipeline) {
+        this.pipeline = pipeline;
     }
 
     public PipeNode getNext() {

@@ -1,6 +1,6 @@
 package model;
 
-public class PipelineType {
+public class Pipeline {
 
     private EnumPipeline pipelineType;
 
@@ -8,7 +8,7 @@ public class PipelineType {
 
     private GameBoard next,prev;
 
-    public PipelineType(int column, int row, int pipelineType) {
+public Pipeline(int column, int row) {
 
         this.column = column;
 
@@ -58,8 +58,49 @@ public class PipelineType {
 
     //Getters and Setters
 
-    public EnumPipeline getPipelineType() {
-        return pipelineType;
+    public String getPipelineType() {
+
+        String msg = "";
+
+         switch (pipelineType){
+             case HORIZONTAL:
+
+                 msg += "=";
+
+                 break;
+
+             case VERTICAL:
+
+                 msg += "||";
+
+                 break;
+
+             case CIRCULAR:
+
+                 msg += "o";
+
+                 break;
+
+             case F:
+
+                 msg += "F";
+
+                 break;
+
+             case D:
+
+                 msg += "D";
+
+                 break;
+
+             case X:
+
+                 msg += "X";
+
+                 break;
+
+         }
+         return msg;
     }
 
     public void setPipelineType(EnumPipeline pipelineType) {

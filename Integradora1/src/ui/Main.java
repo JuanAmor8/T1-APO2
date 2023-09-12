@@ -7,7 +7,7 @@ public class Main {
 
     private Scanner reader;
 
-    private PipeMania pipeMania;
+private PipeMania pipeMania;
 
     public Main() {
 
@@ -62,6 +62,13 @@ public class Main {
     }
 
     public void newGame(){
+
+        pipeMania.createGameBoard();
+
+        //No se que hacer todavia con este nicknames
+        System.out.println("Ingrese su nickname");
+
+        String nicknameString = reader.nextLine();
 
         System.out.println("1. Poner tuberias ");
         System.out.println("2. Simular ");
