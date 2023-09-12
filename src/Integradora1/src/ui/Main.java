@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private Scanner rd;
+    private Scanner reader;
 
     private PipeMania pipeMania;
 
@@ -33,22 +33,22 @@ public class Main {
             System.out.println("2. Ver puntaje");
             System.out.println("3. Salir");
 
-            String optionString = rd.nextLine();
+            String optionString = reader.nextLine();
             int option = Integer.parseInt(optionString);
 
             switch (option){
                 case 1:
-
+                    nuevaPartida();
                     break;
 
                 case 2:
-
+                    verPuntaje();
                     break;
 
                 case 3:
 
-                    System.exit(0);
-
+                    System.out.println("¡Nos vemos pronto!");
+                    cond = true;
                     break;
 
                 default:

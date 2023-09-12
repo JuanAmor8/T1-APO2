@@ -8,6 +8,13 @@ public class GameBoard {
 
     private int key;
 
+
+    public void createBoard() {
+        startTime= 
+    }
+
+
+
     public void addNodeAtTail(int pipe){
 
          player = new Player(nickname);
@@ -24,5 +31,7 @@ public class GameBoard {
         tail= pipeNode;
         key++;
     }
+
+
 
 }
