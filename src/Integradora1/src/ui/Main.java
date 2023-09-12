@@ -95,7 +95,7 @@ public class Main {
 
     public void verPuntaje(){
 
-        System.out.println("daniel es gay");
+
 
     }
 
