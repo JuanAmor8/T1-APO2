@@ -38,11 +38,11 @@ public class Main {
 
             switch (option){
                 case 1:
-                    nuevaPartida();
+                    newGame();
                     break;
 
                 case 2:
-                    verPuntaje();
+                    System.out.println(pipeMania.seeScores());
                     break;
 
                 case 3:
@@ -61,11 +61,11 @@ public class Main {
 
     }
 
-    public void nuevaPartida(){
+    public void newGame(){
 
         System.out.println("1. Poner tuberias ");
         System.out.println("2. Simular ");
-        System.out.println("Salir");
+        System.out.println("3.Salir");
 
         String optionString = reader.nextLine();
         int option = Integer.parseInt(optionString);
@@ -79,7 +79,7 @@ public class Main {
 
             case 2:
 
-                simulation();
+                pipeMania.simulation();
 
                 break;
 
@@ -109,21 +109,18 @@ public class Main {
         String rowString = reader.nextLine();
         int row = Integer.parseInt(rowString);
 
+        System.out.println("Ingrese el tipo de tuberia que desea agregar:");
+        System.out.println("1. ||");
+        System.out.println("2. =");
+        System.out.println("3. o");
 
+        String pipeTypeString = reader.nextLine();
+        int pipeType = Integer.parseInt(pipeTypeString);
 
-    }
-
-    public void simulation(){
-
-
-
-    }
-
-    public void verPuntaje(){
-
-
+        System.out.println(pipeMania.addPipe(column,row,pipeType));
 
     }
+
 
 
 
