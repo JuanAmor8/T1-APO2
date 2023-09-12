@@ -2,7 +2,7 @@ package model;
 
 public class Scoreboard {
 
-    private PipeNode root;
+    private PlayerNode root;
 
     public Scoreboard() {
         this.root = null;
@@ -12,13 +12,11 @@ public class Scoreboard {
         addNode(root, number);
     }
 
-
-
     private void addNode(PipeNode pointer, double number){
 
-        PipeNode pipeNode = new PipeNode(number);
+        PlayerNode playerNode = new PlayerNode();
         if(pointer==null){
-            root= pipeNode;
+            root= playerNode;
         } else if (pipeNode.getNumber() < (pointer.getNumber())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
             if(pointer.getLeft()==null){
                 pointer.setLeft(pipeNode);

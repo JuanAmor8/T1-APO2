@@ -11,7 +11,7 @@ public class Main {
 
     public Main() {
 
-        rd = new Scanner(System.in);
+        reader = new Scanner(System.in);
         pipeMania = new PipeMania();
 
     }
@@ -48,7 +48,7 @@ public class Main {
                 case 3:
 
                     System.out.println("¡Nos vemos pronto!");
-                    cond = true;
+                    System.exit(0);
                     break;
 
                 default:
@@ -67,7 +67,7 @@ public class Main {
         System.out.println("2. Simular ");
         System.out.println("Salir");
 
-        String optionString = rd.nextLine();
+        String optionString = reader.nextLine();
         int option = Integer.parseInt(optionString);
 
         switch (option){

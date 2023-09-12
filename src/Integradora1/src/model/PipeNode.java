@@ -2,38 +2,38 @@ package model;
 
 public class PipeNode {
 
-    private double number;
+    private PipelineType pipelineType;
 
-    private PipeNode left;
+    private PipeNode next;
 
-    private PipeNode right;
+    private PipeNode previous;
 
-    public PipeNode(double number) {
-        this.number = number;
+    public PipeNode(PipelineType pipeline) {
+        this.pipelineType = pipeline;
     }
 
-    public double getNumber() {
-        return number;
+    public PipelineType getPipelineType() {
+        return pipelineType;
     }
 
-    public void setList(double number) {
-        this.number = number;
+    public void setPipelineType(PipelineType pipelineType) {
+        this.pipelineType = pipelineType;
     }
 
-    public PipeNode getLeft() {
-        return left;
+    public PipeNode getNext() {
+        return next;
     }
 
-    public void setLeft(PipeNode left) {
-        this.left = left;
+    public void setNext(PipeNode next) {
+        this.next = next;
     }
 
-    public PipeNode getRight() {
-        return right;
+    public PipeNode getPrevious() {
+        return previous;
     }
 
-    public void setRight(PipeNode right) {
-        this.right = right;
+    public void setPrevious(PipeNode previous) {
+        this.previous = previous;
     }
 
 }

@@ -56,4 +56,45 @@ public class PipelineType {
 
     }
 
+    //Getters and Setters
+
+    public EnumPipeline getPipelineType() {
+        return pipelineType;
+    }
+
+    public void setPipelineType(EnumPipeline pipelineType) {
+        this.pipelineType = pipelineType;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public GameBoard getNext() {
+        return next;
+    }
+
+    public void setNext(GameBoard next) {
+        this.next = next;
+    }
+
+    public GameBoard getPrev() {
+        return prev;
+    }
+
+    public void setPrev(GameBoard prev) {
+        this.prev = prev;
+    }
 }

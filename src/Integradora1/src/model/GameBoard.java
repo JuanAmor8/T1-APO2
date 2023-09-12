@@ -10,16 +10,16 @@ public class GameBoard {
 
 
     public void createBoard() {
-        startTime= 
+
     }
 
 
 
-    public void addNodeAtTail(int pipe){
+    public void addNodeAtTail(int column, int row,int pipe){
 
-         player = new Player(nickname);
+         PipelineType pipeline= new PipelineType(column,row,pipe);
 
-        PipeNode pipeNode = new PipeNode(player);
+        PipeNode pipeNode = new PipeNode(pipeline);
 
         if(head==null){ // lista vacia
             head= pipeNode;
@@ -31,6 +31,19 @@ public class GameBoard {
         tail= pipeNode;
         key++;
     }
+
+    public PipeNode findNodeFromHead (int row, int column){
+        return findNode(this.head,row,column);
+    }
+
+
+    private PipeNode findNode(PipeNode pointer, int row, int column){
+        if(pointer!=null && pointer.getPipelineType().getRow()!=row && pointer.getPipelineType().getColumn()!=column){ // hace la recursion cuando no encuentra al nodo
+            return findNode(pointer.getNext(),row,column);
+        }
+        return pointer; // null cuando no lo encuentra
+    }
+
 
 
 
