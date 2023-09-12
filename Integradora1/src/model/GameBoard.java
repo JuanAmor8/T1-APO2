@@ -13,8 +13,6 @@ public class GameBoard {
 
     }
 
-
-
     public void addNodeAtTail(int column, int row,int pipe){
 
          PipelineType pipeline= new PipelineType(column,row,pipe);

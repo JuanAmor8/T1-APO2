@@ -73,16 +73,19 @@ public class Main {
         switch (option){
             case 1:
 
+                addPipe();
 
                 break;
 
             case 2:
 
+                simulation();
 
                 break;
 
             case 3:
 
+                System.exit(0);
 
                 break;
 
@@ -90,6 +93,29 @@ public class Main {
 
                 System.out.println("Ingrese un numero del 1 al 3 ");
         }
+
+    }
+
+    public void addPipe(){
+
+        System.out.println("Ingrese la posicion en que desea ingresar la nueva tuberia:");
+        System.out.println("Ingrese la columna:");
+
+        String columnString = reader.nextLine();
+        int column = Integer.parseInt(columnString);
+
+        System.out.println("Ingrese la fila:");
+
+        String rowString = reader.nextLine();
+        int row = Integer.parseInt(rowString);
+
+
+
+    }
+
+    public void simulation(){
+
+
 
     }
 
