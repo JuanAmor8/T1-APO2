@@ -6,9 +6,9 @@ public class Player {
 
     private double score;
 
-    public Player(String nickname, double  score) {
+    public Player(String nickname) {
         this.nickname = nickname;
-        this.score = score;
+        this.score = 0;
     }
 
     public String getNickname() {

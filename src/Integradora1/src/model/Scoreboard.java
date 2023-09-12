@@ -9,25 +9,27 @@ public class Scoreboard {
     }
 
     public void addNode(double number){
-        addNode(root, number);
+        addNode(root);
     }
 
-    private void addNode(PipeNode pointer, double number){
+    private void addNode(PlayerNode pointer, String nickname){
 
-        PlayerNode playerNode = new PlayerNode();
+        Player player = new Player(nickname);
+
+        PlayerNode playerNode = new PlayerNode(player);
         if(pointer==null){
             root= playerNode;
-        } else if (pipeNode.getNumber() < (pointer.getNumber())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
+        } else if (playerNode.getScore() < (pointer.getScore())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
             if(pointer.getLeft()==null){
-                pointer.setLeft(pipeNode);
+                pointer.setLeft(playerNode);
             }else{
-                addNode(pointer.getLeft(), number);
+                addNode(pointer.getLeft(), nickname);
             }
         } else { // el valor del nuevo nodo es igual o mayor que el puntero actual
             if (pointer.getRight()==null){
-                pointer.setRight(pipeNode);
+                pointer.setRight(playerNode);
             } else {
-                addNode(pointer.getRight(), number);
+                addNode(pointer.getRight(), nickname);
             }
         }
     }
@@ -36,27 +38,27 @@ public class Scoreboard {
         return print(root);
     }
 
-    private String print(PipeNode pointer){
+    private String print(PlayerNode pointer){
         if (pointer == null){
             return "";
         }
         else {
-            return print(pointer.getLeft()) +" "+pointer.getNumber()+" "+print(pointer.getRight());
+            return print(pointer.getLeft()) +" "+pointer.getScore()+" "+print(pointer.getRight());
         }
     }
 
-    private double getMin(PipeNode pointer){
+    private double getMin(PlayerNode pointer){
         if(pointer.getLeft()==null){
-            return pointer.getNumber();
+            return pointer.getScore();
         }
         else {
             return getMin(pointer.getLeft());
         }
     }
 
-    private double getMax(PipeNode pointer){
+    private double getMax(PlayerNode pointer){
         if(pointer.getRight()==null){
-            return pointer.getNumber();
+            return pointer.getScore();
         }
         else {
             return getMin(pointer.getLeft());

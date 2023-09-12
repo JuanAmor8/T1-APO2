@@ -23,13 +23,11 @@ public class GameBoard {
 
         if(head==null){ // lista vacia
             head= pipeNode;
-            key = 0;
         } else {
             tail.setNext(pipeNode);
             pipeNode.setPrevious(tail);
         }
         tail= pipeNode;
-        key++;
     }
 
     public PipeNode findNodeFromHead (int row, int column){
