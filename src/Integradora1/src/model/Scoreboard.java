@@ -8,8 +8,8 @@ public class Scoreboard {
         this.root = null;
     }
 
-    public void addNode(double number){
-        addNode(root);
+    public void addNode(String nickname){
+        addNode(root,nickname);
     }
 
     private void addNode(PlayerNode pointer, String nickname){
@@ -19,7 +19,7 @@ public class Scoreboard {
         PlayerNode playerNode = new PlayerNode(player);
         if(pointer==null){
             root= playerNode;
-        } else if (playerNode.getScore() < (pointer.getScore())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
+        } else if (playerNode.getPlayer().getScore() < (pointer.getPlayer().getScore())) { // el valor del nuevo nodo es menor que el valor del puntero actual?
             if(pointer.getLeft()==null){
                 pointer.setLeft(playerNode);
             }else{
@@ -43,13 +43,13 @@ public class Scoreboard {
             return "";
         }
         else {
-            return print(pointer.getLeft()) +" "+pointer.getScore()+" "+print(pointer.getRight());
+            return print(pointer.getLeft()) +"\n"+pointer.getPlayer().getNickname()+": "+pointer.getPlayer().getScore()+"\n"+print(pointer.getRight());
         }
     }
 
     private double getMin(PlayerNode pointer){
         if(pointer.getLeft()==null){
-            return pointer.getScore();
+            return pointer.getPlayer().getScore();
         }
         else {
             return getMin(pointer.getLeft());
@@ -58,7 +58,7 @@ public class Scoreboard {
 
     private double getMax(PlayerNode pointer){
         if(pointer.getRight()==null){
-            return pointer.getScore();
+            return pointer.getPlayer().getScore();
         }
         else {
             return getMin(pointer.getLeft());

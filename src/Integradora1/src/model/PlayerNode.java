@@ -12,8 +12,8 @@ public class PlayerNode {
         this.player = player;
     }
 
-    public double getScore() {
-        return player.getScore();
+    public Player getPlayer () {
+        return player;
     }
 
     public void setPlayerScore(double score) {
