@@ -2,14 +2,11 @@ package model;
 
 public class PipeMania {
 
-    private GameBoard gameBoard;
+    private static Gameboard gameboard = new Gameboard();
 
-    private Scoreboard scoreboard;
+    private static Scoreboard scoreboard = new Scoreboard();
 
     public PipeMania() {
-
-        GameBoard gameBoard = new GameBoard();
-        Scoreboard scoreboard = new Scoreboard();
 
     }
 
@@ -17,15 +14,15 @@ public class PipeMania {
 
     }
 
-    public void createGameBoard(){
-        createGameBoard(0,0,0);
+    public String createGameboard(){
+        return createGameboard(0,0,0);
     }
 
-    private void createGameBoard(int counter,int column, int row ){
+    private String createGameboard(int counter,int column, int row ){
 
-        if(counter < 65){
+        if(counter < 64){
 
-            if (counter%8 == 0){
+            if (counter%8 == 0 && counter !=0){
 
                 column = 0;
 
@@ -33,11 +30,13 @@ public class PipeMania {
 
             }
 
-            gameBoard.addNodeAtTail(column,row);
+            gameboard.addNodeAtTail(column,row);
 
-            createGameBoard(counter+1,column+1,row);
+            createGameboard(counter+1,column+1,row);
 
         }
+
+        return gameboard.print();
 
     }
 

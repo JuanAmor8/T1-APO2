@@ -6,7 +6,7 @@ public class Pipeline {
 
     private int column, row;
 
-    private GameBoard next,prev;
+    private Gameboard next,prev;
 
 public Pipeline(int column, int row) {
 
@@ -100,7 +100,9 @@ public Pipeline(int column, int row) {
                  break;
 
          }
+
          return msg;
+
     }
 
     public void setPipelineType(EnumPipeline pipelineType) {
@@ -123,19 +125,19 @@ public Pipeline(int column, int row) {
         this.row = row;
     }
 
-    public GameBoard getNext() {
+    public Gameboard getNext() {
         return next;
     }
 
-    public void setNext(GameBoard next) {
+    public void setNext(Gameboard next) {
         this.next = next;
     }
 
-    public GameBoard getPrev() {
+    public Gameboard getPrev() {
         return prev;
     }
 
-    public void setPrev(GameBoard prev) {
+    public void setPrev(Gameboard prev) {
         this.prev = prev;
     }
 }

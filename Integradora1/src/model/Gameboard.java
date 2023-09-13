@@ -1,6 +1,6 @@
 package model;
 
-public class GameBoard {
+public class Gameboard {
 
     private PipeNode head;
 
@@ -41,13 +41,13 @@ public class GameBoard {
 
         String msg = "";
 
-        if (head == null){
-            msg += "There are no houses";
-        }
-
-        else if (counter%8 == 0){
+        if (counter%8 == 0 && counter != 0){
             msg+="\n";
             counter = 0;
+        }
+
+        if (head == null){
+            msg += "There are no pipes";
         }
 
         else if(pointer.getNext() == null){
