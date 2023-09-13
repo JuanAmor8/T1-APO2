@@ -32,11 +32,13 @@ public class PipeMania {
 
             gameboard.addNodeAtTail(row,column);
 
-            createGameboard(counter+1,row,column+1);
+            return createGameboard(counter+1,row,column+1);
 
         }
 
-        return gameboard.print1();
+        gameboard.addDYF();
+
+        return gameboard.print();
 
 
     }

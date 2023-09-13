@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class Gameboard {
 
     private PipeNode head;
@@ -21,16 +23,45 @@ public class Gameboard {
         tail= pipeNode;
     }
 
+    public void addDYF(){
+
+        Random rand = new Random();
+        int rowD = rand.nextInt(8);
+        int columnD = rand.nextInt(8);
+
+        int rowF = rand.nextInt(8);
+        int columnF = rand.nextInt(8);
+
+        while(rowD == rowF && columnF == columnD){
+
+            rowF = rand.nextInt(8);
+            columnF = rand.nextInt(8);
+
+        }
+
+        PipeNode pipeF = findNodeFromHead(rowF,columnF);
+        pipeF.getPipeline().setPipelineType(4);
+
+        PipeNode pipeD = findNodeFromHead(rowD,columnD);
+        pipeD.getPipeline().setPipelineType(5);
+
+    }
+
+
     public PipeNode findNodeFromHead (int row, int column){
         return findNode(this.head,row,column);
     }
 
+    public PipeNode findNode(PipeNode current, int column, int row) {
 
-    private PipeNode findNode(PipeNode pointer, int row, int column){
-        if(pointer!=null && pointer.getPipeline().getRow()!=row && pointer.getPipeline().getColumn()!=column){ // hace la recursion cuando no encuentra al nodo
-            return findNode(pointer.getNext(),row,column);
+        if (current == null) {
+            return null;
+        } else if (column == current.getPipeline().getColumn() && row == current.getPipeline().getRow()) {
+            return current;
+        } else {
+            return findNode(current.getNext(), column, row);
         }
-        return pointer; // null cuando no lo encuentra
+
     }
 
     public String print(){
