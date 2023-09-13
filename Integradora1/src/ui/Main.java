@@ -106,15 +106,15 @@ private PipeMania pipeMania;
     public void addPipe(){
 
         System.out.println("Ingrese la posicion en que desea ingresar la nueva tuberia:");
-        System.out.println("Ingrese la columna:");
-
-        String columnString = reader.nextLine();
-        int column = Integer.parseInt(columnString);
-
         System.out.println("Ingrese la fila:");
 
         String rowString = reader.nextLine();
         int row = Integer.parseInt(rowString);
+
+        System.out.println("Ingrese la columna:");
+
+        String columnString = reader.nextLine();
+        int column = Integer.parseInt(columnString);
 
         System.out.println("Ingrese el tipo de tuberia que desea agregar:");
         System.out.println("1. ||");
