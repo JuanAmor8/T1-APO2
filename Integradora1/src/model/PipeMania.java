@@ -18,7 +18,7 @@ public class PipeMania {
         return createGameboard(0,0,0);
     }
 
-    private String createGameboard(int counter,int column, int row ){
+    private String createGameboard(int counter, int row,int column ){
 
         if(counter < 64){
 
@@ -26,17 +26,18 @@ public class PipeMania {
 
                 column = 0;
 
-                row =+ 1;
+                row ++;
 
             }
 
-            gameboard.addNodeAtTail(column,row);
+            gameboard.addNodeAtTail(row,column);
 
-            createGameboard(counter+1,column+1,row);
+            createGameboard(counter+1,row,column+1);
 
         }
 
-        return gameboard.print();
+        return gameboard.print1();
+
 
     }
 

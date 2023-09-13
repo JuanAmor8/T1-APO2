@@ -8,7 +8,7 @@ public class Pipeline {
 
     private Gameboard next,prev;
 
-public Pipeline(int column, int row) {
+public Pipeline(int row, int column) {
 
         this.column = column;
 

@@ -6,9 +6,9 @@ public class Gameboard {
 
     private PipeNode tail;
 
-    public void addNodeAtTail(int column, int row){
+    public void addNodeAtTail(int row, int column){
 
-         Pipeline pipeline= new Pipeline(column,row);
+         Pipeline pipeline= new Pipeline(row,column);
 
         PipeNode pipeNode = new PipeNode(pipeline);
 
@@ -58,6 +58,36 @@ public class Gameboard {
         else{
 
             msg += pointer.getPipeline().getPipelineType() + " " + print(pointer.getNext(),counter+1);
+
+        }
+        return msg;
+    }
+
+    public String print1(){
+        return print1(head,0);
+    }
+
+    private String print1(PipeNode pointer,int counter){
+
+        String msg = "";
+
+        if (counter%8 == 0 && counter != 0){
+            msg+="\n";
+            counter = 0;
+        }
+
+        if (head == null){
+            msg += "There are no pipes";
+        }
+
+        else if(pointer.getNext() == null){
+
+            msg += "" + pointer.getPipeline().getRow() + ","+ pointer.getPipeline().getColumn();
+
+        }
+        else{
+
+            msg += pointer.getPipeline().getRow() + ","+ pointer.getPipeline().getColumn() + " " + print1(pointer.getNext(),counter+1);
 
         }
         return msg;
