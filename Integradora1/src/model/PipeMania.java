@@ -2,7 +2,7 @@ package model;
 
 public class PipeMania {
 
-    private static Gameboard gameboard = new Gameboard();
+    private static Gameboard gameboard;
 
     private static Scoreboard scoreboard = new Scoreboard();
 
@@ -14,11 +14,12 @@ public class PipeMania {
 
     }
 
-    public String createGameboard(){
-        return createGameboard(0,0,0);
+    public void createGameboard(){
+        gameboard = new Gameboard();
+        createGameboard(0,0,0);
     }
 
-    private String createGameboard(int counter, int row,int column ){
+    private void createGameboard(int counter, int row,int column ){
 
         if(counter < 64){
 
@@ -32,13 +33,9 @@ public class PipeMania {
 
             gameboard.addNodeAtTail(row,column);
 
-            return createGameboard(counter+1,row,column+1);
+            createGameboard(counter+1,row,column+1);
 
         }
-
-        gameboard.addDYF();
-
-        return gameboard.print();
 
 
     }
@@ -77,6 +74,17 @@ public class PipeMania {
         return msg;
 
     }
+    public void addDYF(){
+        gameboard.addDYF();
+
+    }
+
+    public String print(){
+        return gameboard.print();
+    }
+
+
+
 
     public Gameboard getGameboard() {
         return gameboard;

@@ -188,5 +188,58 @@ public class Gameboard {
         return msg;
     }
 
+    public boolean simulate(){
+        return simulate(searchFountain());
+    }
+
+    private boolean simulate(PipeNode pointer){
+        if(pointer == null) return false;
+        int rowPos = pointer.getPipeline().getRow();
+        int columnPos = pointer.getPipeline().getColumn();
+        //vertical
+        if (!findNodeFromHead(rowPos+1, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
+            EnumPipeline type = findNodeFromHead(rowPos+1, columnPos).getPipeline().getEnumPipelineType();
+            if(type.equals(EnumPipeline.VERTICAL)){
+                return simulate(findNodeFromHead(rowPos+1,columnPos));
+            }
+        }
+
+        if (!findNodeFromHead(rowPos-1, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
+            EnumPipeline type = findNodeFromHead(rowPos-1, columnPos).getPipeline().getEnumPipelineType();
+            if(type.equals(EnumPipeline.VERTICAL)){
+                return simulate(findNodeFromHead(rowPos-1,columnPos));
+            }
+        }
+        //horizontal
+        if (!findNodeFromHead(rowPos, columnPos+1).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
+            EnumPipeline type = findNodeFromHead(rowPos, columnPos+1).getPipeline().getEnumPipelineType();
+            if(type.equals(EnumPipeline.HORIZONTAL)){
+                return simulate(findNodeFromHead(rowPos,columnPos+1));
+            }
+        }
+
+        if (!findNodeFromHead(rowPos, columnPos-1).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
+            EnumPipeline type = findNodeFromHead(rowPos, columnPos-1).getPipeline().getEnumPipelineType();
+            if(type.equals(EnumPipeline.HORIZONTAL)){
+                return simulate(findNodeFromHead(rowPos,columnPos-1));
+            }
+        }
+        return false;
+    }
+
+    public PipeNode searchFountain(){
+        return searchFountain(head);
+
+    }
+
+
+    private PipeNode searchFountain(PipeNode currentNode){
+        if (currentNode == null) return  null;
+        if(currentNode.getPipeline().getEnumPipelineType().equals(EnumPipeline.F)){
+            return currentNode;
+        }
+        return searchFountain(currentNode.getNext());
+    }
+
 
 }

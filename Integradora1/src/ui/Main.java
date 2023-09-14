@@ -63,8 +63,9 @@ private PipeMania pipeMania;
 
     public void newGame(){
 
-        System.out.println(pipeMania.createGameboard());
-
+        pipeMania.createGameboard();
+        pipeMania.addDYF();
+        System.out.println(pipeMania.print());
         //No se que hacer todavia con este nicknames
         System.out.println("Ingrese su nickname");
 
@@ -98,7 +99,7 @@ private PipeMania pipeMania;
 
                 case 3:
 
-                    System.exit(0);
+                    flag = false;
 
                     break;
 

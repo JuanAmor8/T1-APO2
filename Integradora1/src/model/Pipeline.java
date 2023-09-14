@@ -6,8 +6,6 @@ public class Pipeline {
 
     private int column, row;
 
-    private Gameboard next,prev;
-
 public Pipeline(int row, int column) {
 
         this.column = column;
@@ -125,19 +123,8 @@ public Pipeline(int row, int column) {
         this.row = row;
     }
 
-    public Gameboard getNext() {
-        return next;
+    public String getPosition(){
+        return "" + row + column;
     }
 
-    public void setNext(Gameboard next) {
-        this.next = next;
-    }
-
-    public Gameboard getPrev() {
-        return prev;
-    }
-
-    public void setPrev(Gameboard prev) {
-        this.prev = prev;
-    }
 }
