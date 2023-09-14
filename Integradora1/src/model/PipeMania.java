@@ -83,7 +83,9 @@ public class PipeMania {
         return gameboard.print();
     }
 
-
+    public boolean simulate(){
+        return gameboard.simulate();
+    }
 
 
     public Gameboard getGameboard() {

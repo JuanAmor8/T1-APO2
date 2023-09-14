@@ -6,10 +6,13 @@ public class PipeNode {
 
     private PipeNode next;
 
+    private Boolean visited;
+
     private PipeNode previous;
 
     public PipeNode(Pipeline pipeline) {
         this.pipeline = pipeline;
+        this.visited = false;
     }
 
     public Pipeline getPipeline() {
@@ -32,4 +35,11 @@ public class PipeNode {
         this.previous = previous;
     }
 
+    public Boolean getVisited() {
+        return visited;
+    }
+
+    public void setVisited(Boolean visited) {
+        this.visited = visited;
+    }
 }

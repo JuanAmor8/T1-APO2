@@ -75,8 +75,6 @@ private PipeMania pipeMania;
 
         while (flag){
 
-
-
             System.out.println("1. Poner tuberias ");
             System.out.println("2. Simular ");
             System.out.println("3.Salir");
@@ -93,7 +91,7 @@ private PipeMania pipeMania;
 
                 case 2:
 
-                    pipeMania.simulation();
+                    System.out.println(pipeMania.simulate());
 
                     break;
 

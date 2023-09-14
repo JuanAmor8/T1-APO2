@@ -188,42 +188,92 @@ public class Gameboard {
         return msg;
     }
 
+    public void setVisitedFalse(){
+        setVisitedFalse(head);
+    }
+
+    private void setVisitedFalse(PipeNode pointer){
+        if(pointer == null) return;
+        pointer.setVisited(false);
+        setVisitedFalse(pointer.getNext());
+    }
+
     public boolean simulate(){
+        setVisitedFalse();
         return simulate(searchFountain());
     }
 
     private boolean simulate(PipeNode pointer){
         if(pointer == null) return false;
+        if(pointer.getPipeline().getEnumPipelineType().equals(EnumPipeline.D)) return true;
         int rowPos = pointer.getPipeline().getRow();
         int columnPos = pointer.getPipeline().getColumn();
         //vertical
-        if (!findNodeFromHead(rowPos+1, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
-            EnumPipeline type = findNodeFromHead(rowPos+1, columnPos).getPipeline().getEnumPipelineType();
-            if(type.equals(EnumPipeline.VERTICAL)){
-                return simulate(findNodeFromHead(rowPos+1,columnPos));
+        if (findNodeFromHead(rowPos+1, columnPos)!= null){
+            if (!findNodeFromHead(rowPos+1, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) && !findNodeFromHead(rowPos+1, columnPos).getVisited()){
+                EnumPipeline type = findNodeFromHead(rowPos+1, columnPos).getPipeline().getEnumPipelineType();
+                System.out.println(type.toString());
+                if(type.equals(EnumPipeline.VERTICAL)){
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos+1,columnPos));
+                } else if (type.equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.F)) {
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos+1,columnPos));
+                } else if (type.equals(EnumPipeline.D)){
+                    return true;
+                }
             }
         }
 
-        if (!findNodeFromHead(rowPos-1, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
-            EnumPipeline type = findNodeFromHead(rowPos-1, columnPos).getPipeline().getEnumPipelineType();
-            if(type.equals(EnumPipeline.VERTICAL)){
-                return simulate(findNodeFromHead(rowPos-1,columnPos));
+        if (findNodeFromHead(rowPos-1, columnPos)!= null){
+            if (!findNodeFromHead(rowPos-1, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) && !findNodeFromHead(rowPos-1, columnPos).getVisited()){
+                EnumPipeline type = findNodeFromHead(rowPos-1, columnPos).getPipeline().getEnumPipelineType();
+                System.out.println(type.toString());
+                if(type.equals(EnumPipeline.VERTICAL)){
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos-1,columnPos));
+                } else if (type.equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.F)) {
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos-1,columnPos));
+                } else if (type.equals(EnumPipeline.D)){
+                    return true;
+                }
             }
         }
+
         //horizontal
-        if (!findNodeFromHead(rowPos, columnPos+1).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
-            EnumPipeline type = findNodeFromHead(rowPos, columnPos+1).getPipeline().getEnumPipelineType();
-            if(type.equals(EnumPipeline.HORIZONTAL)){
-                return simulate(findNodeFromHead(rowPos,columnPos+1));
+        if(findNodeFromHead(rowPos, columnPos+1)!= null){
+            if (!findNodeFromHead(rowPos, columnPos+1).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) && !findNodeFromHead(rowPos, columnPos+1).getVisited()){
+                EnumPipeline type = findNodeFromHead(rowPos, columnPos+1).getPipeline().getEnumPipelineType();
+                System.out.println(type.toString());
+                if(type.equals(EnumPipeline.HORIZONTAL)){
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos,columnPos+1));
+                } else if (type.equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.F)) {
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos,columnPos+1));
+                } else if (type.equals(EnumPipeline.D)){
+                    return true;
+                }
             }
         }
 
-        if (!findNodeFromHead(rowPos, columnPos-1).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) ){
-            EnumPipeline type = findNodeFromHead(rowPos, columnPos-1).getPipeline().getEnumPipelineType();
-            if(type.equals(EnumPipeline.HORIZONTAL)){
-                return simulate(findNodeFromHead(rowPos,columnPos-1));
+        if (findNodeFromHead(rowPos, columnPos-1)!= null){
+            if (!findNodeFromHead(rowPos, columnPos-1).getPipeline().getEnumPipelineType().equals(EnumPipeline.X) && !findNodeFromHead(rowPos, columnPos-1).getVisited()){
+                EnumPipeline type = findNodeFromHead(rowPos, columnPos-1).getPipeline().getEnumPipelineType();
+                System.out.println(type.toString());
+                if(type.equals(EnumPipeline.HORIZONTAL)){
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos,columnPos-1));
+                } else if (type.equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.CIRCULAR) && !findNodeFromHead(rowPos, columnPos).getPipeline().getEnumPipelineType().equals(EnumPipeline.F)) {
+                    pointer.setVisited(true);
+                    return simulate(findNodeFromHead(rowPos,columnPos-1));
+                } else if (type.equals(EnumPipeline.D)){
+                    return true;
+                }
             }
         }
+
         return false;
     }
 
