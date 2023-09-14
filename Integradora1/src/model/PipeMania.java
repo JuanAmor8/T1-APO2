@@ -45,12 +45,16 @@ public class PipeMania {
 
 
 
-    public String addPipe(int clumn, int row, int pipeType){
+    public String addPipe( int row, int column, int pipeType){
 
         String msg = "";
 
-
-
+        if (gameboard.addPipe(row,column,pipeType)){
+            msg+="Su pipe fue agregado correctamente";
+        }
+        else{
+            msg+="Hubo un error al agregar su pipe(Ingrese un numero del 1 al 3)";
+        }
 
 
         return msg;
@@ -73,4 +77,13 @@ public class PipeMania {
         return msg;
 
     }
+
+    public Gameboard getGameboard() {
+        return gameboard;
+    }
+
+    public Scoreboard getScoreboard() {
+        return scoreboard;
+    }
+
 }

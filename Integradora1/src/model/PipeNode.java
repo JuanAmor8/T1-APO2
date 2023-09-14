@@ -16,10 +16,6 @@ public class PipeNode {
         return pipeline;
     }
 
-    public void setPipelineType(Pipeline pipeline) {
-        this.pipeline = pipeline;
-    }
-
     public PipeNode getNext() {
         return next;
     }

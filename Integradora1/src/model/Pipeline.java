@@ -105,6 +105,10 @@ public Pipeline(int row, int column) {
 
     }
 
+    public EnumPipeline getEnumPipelineType(){
+        return this.pipelineType;
+    }
+
     public int getColumn() {
         return column;
     }

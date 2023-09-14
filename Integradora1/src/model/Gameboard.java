@@ -47,12 +47,24 @@ public class Gameboard {
 
     }
 
+    public boolean addPipe(int row, int column, int pipeType){
+
+        PipeNode pointer = findNodeFromHead(row,column);
+
+        if (pipeType>0 && pipeType<4){
+            pointer.getPipeline().setPipelineType(pipeType);
+            return true;
+        }
+
+        return false;
+
+    }
 
     public PipeNode findNodeFromHead (int row, int column){
         return findNode(this.head,row,column);
     }
 
-    public PipeNode findNode(PipeNode current, int column, int row) {
+    private PipeNode findNode(PipeNode current, int column, int row) {
 
         if (current == null) {
             return null;
@@ -88,17 +100,17 @@ public class Gameboard {
         }
         else{
 
-            msg += pointer.getPipeline().getPipelineType() + " " + print(pointer.getNext(),counter+1);
+            msg += pointer.getPipeline().getPipelineType() + "  " + print(pointer.getNext(),counter+1);
 
         }
         return msg;
     }
 
-    public String print1(){
-        return print1(head,0);
+    public String printRowColumn(){
+        return printRowColumn(head,0);
     }
 
-    private String print1(PipeNode pointer,int counter){
+    private String printRowColumn(PipeNode pointer,int counter){
 
         String msg = "";
 
@@ -113,12 +125,64 @@ public class Gameboard {
 
         else if(pointer.getNext() == null){
 
-            msg += "" + pointer.getPipeline().getRow() + ","+ pointer.getPipeline().getColumn();
+            if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.F || pointer.getPipeline().getEnumPipelineType() == EnumPipeline.D ){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.HORIZONTAL){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.VERTICAL){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.CIRCULAR){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else {
+
+                msg += "" + pointer.getPipeline().getRow() + ","+ pointer.getPipeline().getColumn()+" |";
+
+            }
+
+
 
         }
         else{
 
-            msg += pointer.getPipeline().getRow() + ","+ pointer.getPipeline().getColumn() + " " + print1(pointer.getNext(),counter+1);
+            if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.F || pointer.getPipeline().getEnumPipelineType() == EnumPipeline.D ){
+
+                msg += " "+pointer.getPipeline().getPipelineType() + "  | " + printRowColumn(pointer.getNext(),counter+1);
+
+            }
+            else if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.HORIZONTAL){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.VERTICAL){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else if (pointer.getPipeline().getEnumPipelineType() == EnumPipeline.CIRCULAR){
+
+                msg += "   "+pointer.getPipeline().getPipelineType()+" |";
+
+            }
+            else {
+
+                msg += pointer.getPipeline().getRow() + ","+ pointer.getPipeline().getColumn() + " | " + printRowColumn(pointer.getNext(),counter+1);
+
+            }
+
+
 
         }
         return msg;

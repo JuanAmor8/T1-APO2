@@ -70,40 +70,50 @@ private PipeMania pipeMania;
 
         String nicknameString = reader.nextLine();
 
-        System.out.println("1. Poner tuberias ");
-        System.out.println("2. Simular ");
-        System.out.println("3.Salir");
+        boolean flag = true;
 
-        String optionString = reader.nextLine();
-        int option = Integer.parseInt(optionString);
+        while (flag){
 
-        switch (option){
-            case 1:
 
-                addPipe();
 
-                break;
+            System.out.println("1. Poner tuberias ");
+            System.out.println("2. Simular ");
+            System.out.println("3.Salir");
 
-            case 2:
+            String optionString = reader.nextLine();
+            int option = Integer.parseInt(optionString);
 
-                pipeMania.simulation();
+            switch (option){
+                case 1:
 
-                break;
+                    addPipe();
 
-            case 3:
+                    break;
 
-                System.exit(0);
+                case 2:
 
-                break;
+                    pipeMania.simulation();
 
-            default:
+                    break;
 
-                System.out.println("Ingrese un numero del 1 al 3 ");
+                case 3:
+
+                    System.exit(0);
+
+                    break;
+
+                default:
+
+                    System.out.println("Ingrese un numero del 1 al 3 ");
+            }
+
         }
 
     }
 
     public void addPipe(){
+
+        System.out.println(pipeMania.getGameboard().printRowColumn());
 
         System.out.println("Ingrese la posicion en que desea ingresar la nueva tuberia:");
         System.out.println("Ingrese la fila:");
@@ -117,14 +127,16 @@ private PipeMania pipeMania;
         int column = Integer.parseInt(columnString);
 
         System.out.println("Ingrese el tipo de tuberia que desea agregar:");
-        System.out.println("1. ||");
-        System.out.println("2. =");
+        System.out.println("1. =");
+        System.out.println("2. ||");
         System.out.println("3. o");
 
         String pipeTypeString = reader.nextLine();
         int pipeType = Integer.parseInt(pipeTypeString);
 
         System.out.println(pipeMania.addPipe(column,row,pipeType));
+
+        System.out.println(pipeMania.getGameboard().print());
 
     }
 
